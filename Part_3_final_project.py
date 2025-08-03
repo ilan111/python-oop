@@ -43,7 +43,7 @@ def saveNewEntry(data: dict, count: dict, ids: list):
         person_type = input(choosePersonTypeStr())
 
     id = input("ID: ")
-    if not isNumber(id, "id"):
+    if not isNumber(id, "ID"):
         return
     
     id = int(id)
@@ -65,13 +65,22 @@ def saveNewEntry(data: dict, count: dict, ids: list):
     elif person_type == "2":
         field_of_study = input("Field of study: ")
         year_of_study = input("Year of study: ")
-        score_avg = int(input("Score Average: "))
+        if not isNumber(year_of_study, "Year of study"):
+            return
+        year_of_study = int(year_of_study)
+        score_avg = input("Score Average: ")
+        if not isNumber(score_avg, "Score Average"):
+            return
+        score_avg = int(score_avg)
         new_student = Student(id=id, name=name, age=age, field_of_study=field_of_study, year_of_study=year_of_study, score_avg=score_avg)
         data[id] = new_student
 
     elif person_type == "3":
         field_of_work = input("Field of work: ")
         salary = input("Salary: ")
+        if not isNumber(salary, "Salary"):
+            return
+        salary = int(salary)
         new_employee = Employee(id=id, name=name, age=age, field_of_work=field_of_work, salary=salary)
         data[id] = new_employee
         
@@ -140,38 +149,8 @@ def printEntryByIndex(data: dict, ids: list):
 
 # OPTION 8    
 def saveToCSV(data: dict):
-    output_file_name = input("What is your output file name? ") + ".csv"
-
-    data_table = {
-        "id": [],
-        "type": [],
-        "name": [],
-        "age": [],
-        "field_of_study" : [],
-        "year_of_study" : [],
-        "score_avg" : [],
-        "field_of_work" : [],
-        "salary" : []
-    }
-
-    person_types = ["Person", "Student", "Employee"]
-
-    for item in data.items():
-        # Person type (parent object)
-        data_table["id"].append(item[0])
-        data_table["type"].append(item[1].getType())
-        data_table["name"].append(item[1].getName())
-        data_table["age"].append(item[1].getAge())
-
-        # Student type (child object) - person_types[0]
-        data_table["field_of_study"].append(item[1].getFieldOfStudy()) if item[1].getType() == person_types[1] else data_table["field_of_study"].append(None)
-        data_table["year_of_study"].append(item[1].getYearOfStudy()) if item[1].getType() == person_types[1] else data_table["year_of_study"].append(None)
-        data_table["score_avg"].append(item[1].getScoreAvg()) if item[1].getType() == person_types[1] else data_table["score_avg"].append(None)
-        
-        # Employee type (child object) - person_types[1]
-        data_table["field_of_work"].append(item[1].getFieldOfWork()) if item[1].getType() == person_types[2] else data_table["field_of_work"].append(None)
-        data_table["salary"].append(item[1].getSalary()) if item[1].getType() == person_types[2] else data_table["salary"].append(None)
-
+    output_file_name = input("What is your output file name? ").strip() + ".csv" or "output.csv"
+    data_table = [obj.getCsvLine() for obj in data.values()]
     df = pd.DataFrame(data_table)
     df.to_csv(output_file_name, index=False)
 

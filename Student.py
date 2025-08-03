@@ -22,6 +22,19 @@ class Student(Person):
     def printMyself(self):
         print(self.printStudent())
 
+    def getCsvLine(self):
+        return {
+            "id": self.getID(),
+            "type": self.getType(),
+            "name": self.getName(),
+            "age": self.getAge(),
+            "field_of_study" : self.getFieldOfStudy(),
+            "year_of_study" : self.getYearOfStudy(),
+            "score_avg" : self.getScoreAvg(),
+            "field_of_work" : None,
+            "salary" : None
+        }
+
 ## TESTS FOR MODULE ##
 if __name__ == "__main__":
     test_id = 1234

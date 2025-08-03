@@ -18,6 +18,19 @@ class Employee(Person):
     def printMyself(self):
         print(self.printEmployee())
 
+    def getCsvLine(self):
+        return {
+            "id": self.getID(),
+            "type": self.getType(),
+            "name": self.getName(),
+            "age": self.getAge(),
+            "field_of_study" : None,
+            "year_of_study" : None,
+            "score_avg" : None,
+            "field_of_work" : self.getFieldOfWork(),
+            "salary" : self.getSalary()
+        }
+    
 ## TESTS FOR MODULE ##
 if __name__ == "__main__":
     test_id = 1234
