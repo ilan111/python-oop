@@ -31,11 +31,6 @@ class Person:
             "type": self.getType(),
             "name": self.getName(),
             "age": self.getAge(),
-            "field_of_study" : None,
-            "year_of_study" : None,
-            "score_avg" : None,
-            "field_of_work" : None,
-            "salary" : None
         }
 
 ## TESTS FOR MODULE ##

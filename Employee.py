@@ -20,15 +20,12 @@ class Employee(Person):
 
     def getCsvLine(self):
         return {
-            "id": self.getID(),
-            "type": self.getType(),
-            "name": self.getName(),
-            "age": self.getAge(),
-            "field_of_study" : None,
-            "year_of_study" : None,
-            "score_avg" : None,
+            "id": super().getID(),
+            "type": super().getType(),
+            "name": super().getName(),
+            "age": super().getAge(),
             "field_of_work" : self.getFieldOfWork(),
-            "salary" : self.getSalary()
+            "salary" : self.getSalary(),
         }
     
 ## TESTS FOR MODULE ##
