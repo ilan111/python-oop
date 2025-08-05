@@ -19,14 +19,11 @@ class Employee(Person):
         print(self.printEmployee())
 
     def getCsvLine(self):
-        return {
-            "id": super().getID(),
-            "type": super().getType(),
-            "name": super().getName(),
-            "age": super().getAge(),
-            "field_of_work" : self.getFieldOfWork(),
-            "salary" : self.getSalary(),
-        }
+        output = super().getCsvLine()
+        output["field_of_work"] = self.getFieldOfWork()
+        output["salary"] = self.getSalary()
+        return output
+
     
 ## TESTS FOR MODULE ##
 if __name__ == "__main__":

@@ -23,15 +23,13 @@ class Student(Person):
         print(self.printStudent())
 
     def getCsvLine(self):
-        return {
-            "id": super().getID(),
-            "type": super().getType(),
-            "name": super().getName(),
-            "age": super().getAge(),
-            "field_of_study" : self.getFieldOfStudy(),
-            "year_of_study" : self.getYearOfStudy(),
-            "score_avg" : self.getScoreAvg(),
-        }
+        output = super().getCsvLine()
+        output["field_of_study"] = self.getFieldOfStudy()
+        output["year_of_study"] = self.getYearOfStudy()
+        output["score_avg"] = self.getScoreAvg()
+        return output
+    
+
 
 ## TESTS FOR MODULE ##
 if __name__ == "__main__":
