@@ -12,6 +12,7 @@ class Menu(Enum):
     EXIT = auto()
 
 def printMenu():
+    print("Welcome! please choose:")
     for option in Menu:
         print(f"{option.value}. {option.name.replace('_', ' ').title()}")
     
