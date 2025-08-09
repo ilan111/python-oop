@@ -31,7 +31,7 @@ if __name__ == "__main__":
     test_name = "test_name"
     test_age = 20
     test_field_of_work = "Software Engineer"
-    test_salary = 2
+    test_salary = 20000
 
     employee = Employee(test_id, test_name, test_age, test_field_of_work, test_salary)
     if employee.getID() != test_id:
