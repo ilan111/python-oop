@@ -208,16 +208,16 @@ def main():
     data = {}
     counter = {"ages_sum": 0, "id_count": 0}
     id_list = []
-    demo_data = {10: Person(10, "Dave", 24), 
-                20: Student(20, "Nate", 31, "Software Engineering", 2, 90),
-                30: Employee(30, "Bob", 43, "Cleaner", 10000)}
+    # demo_data = {10: Person(10, "Dave", 24), 
+    #             20: Student(20, "Nate", 31, "Software Engineering", 2, 90),
+    #             30: Employee(30, "Bob", 43, "Cleaner", 10000)}
 
     while True:
         printMenu()
         try:
             user_choice = int(input("Please enter your choice: "))
             selected_option = Menu(user_choice)
-            handleMenuOption(choice=selected_option, data=demo_data, counter=counter, id_list=id_list)
+            handleMenuOption(choice=selected_option, data=data, counter=counter, id_list=id_list)
 
         except ValueError:
             print("Please enter a valid option (1-9)")
